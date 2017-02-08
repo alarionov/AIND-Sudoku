@@ -39,9 +39,27 @@ def naked_twins(values):
     Returns:
         the values dictionary with the naked twins eliminated from peers.
     """
+    for c1 in values:
+        if len(values[c1]) != 2:
+            continue
 
-    # Find all instances of naked twins
-    # Eliminate the naked twins as possibilities for their peers
+        for c2 in peers[c1]:
+            if values[c1] != values[c2]:
+                continue
+
+            v1, v2 = values[c1]
+
+            for c3 in peers[c1]:
+                if c3 == c2:
+                    continue
+
+                if c3 not in peers[c2]:
+                    continue
+
+                values[c3] = values[c3].replace(v1, '')
+                values[c3] = values[c3].replace(v2, '')
+
+    return values
 
 def grid_values(grid):
     """
