@@ -3,11 +3,16 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?
-A: We know that values from naked twins can't be used by their peers, so we can remove those values from their peers
+
+A:
+When we have 2 cells with the same 2 digit-value in the same block, those 2 digits could be assigned to those cells only, not to their peers. Otherwise, we wouldn't have a value for one or both cells from naked twins pair to satisfy constrains of sudoku. Hence we can remove those values from common peers of cells from naked twins pair.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?
-A: We know that every diagonal should contain every number just one time, so we can exclude attempts when we have doubles for solved cells
+
+A:
+In Diagnal sudoku, every diagonal should contain every number and just once, like any other block(row, column, square).
+Hence when have a cell with a single digit value in a diagonal, we can remove the value from other cells of the same diagonal.
 
 ### Install
 
